@@ -1,0 +1,85 @@
+# Interest Rate Model Analysis: CIR, Hull-White, Ho-Lee, and Yield Curve Simulation
+
+## Overview
+This project provides an in-depth analysis of three key interest rate models:
+1. **Cox-Ingersoll-Ross (CIR) Model**
+2. **Hull-White Model**
+3. **Ho-Lee Model**
+
+Additionally, it includes **yield curve generation** using Monte Carlo simulations, fitting interest rate models to the yield curve, and parameter visualization.
+
+## Features
+- **Parameter visualization** for CIR and Hull-White models
+- **Monte Carlo simulation** for yield curve generation using Ho-Lee and Hull-White models
+- **Yield curve fitting** to real-world data
+- **Comparative analysis** of different short-rate models
+
+## Theoretical Background
+### **1. Cox-Ingersoll-Ross (CIR) Model**
+The CIR model is used to describe the evolution of interest rates using the stochastic differential equation:
+\[
+dR_t = \kappa (\theta - R_t) dt + \sigma \sqrt{R_t} dW_t
+\]
+where:
+- \(R_t\) is the short-term interest rate
+- \(\kappa\) is the mean reversion speed
+- \(\theta\) is the long-term mean interest rate
+- \(\sigma\) is the volatility of interest rates
+- \(dW_t\) is a Wiener process
+
+### **2. Hull-White Model**
+The Hull-White model extends the Vasicek model by allowing time-dependent mean reversion levels:
+\[
+dR_t = (\theta(t) - \kappa R_t) dt + \sigma dW_t
+\]
+where \(\theta(t)\) is a deterministic function ensuring the model fits the initial yield curve.
+
+### **3. Ho-Lee Model**
+The Ho-Lee model assumes a normal distribution of interest rate changes:
+\[
+dR_t = \theta(t) dt + \sigma dW_t
+\]
+where \(\theta(t)\) is chosen to fit the yield curve.
+
+## Monte Carlo Simulation for Yield Curve Generation
+Monte Carlo methods generate multiple paths of short-rate evolution using the above models. The zero-coupon bond price is computed as:
+\[
+P(t,T) = \mathbb{E} \left[ e^{-\int_t^T R_s ds} \right]
+\]
+where \(P(t,T)\) is the price of a zero-coupon bond maturing at \(T\).
+
+## Implementation
+### **Parameter Visualization**
+- Plotting \(\kappa\), \(\theta\), and \(\sigma\) for CIR and Hull-White models.
+- Simulated short-rate paths for each model.
+
+### **Yield Curve Fitting**
+- Using least squares to optimize \(\theta(t)\) in the Hull-White model.
+- Comparing simulated yield curves with market data.
+
+## Results
+- Monte Carlo simulation successfully generates realistic yield curves.
+- Hull-White model provides better calibration to market yield curves.
+- CIR model ensures non-negative interest rates, unlike Ho-Lee.
+
+## Usage
+Clone the repository and run:
+```bash
+git clone https://github.com/shubh123a3/Interest-Rate-Model-Analysis-CIR-Hull-White-Hoo-Lee-and-Yield-Curve-Simulation
+cd Interest-Rate-Model-Analysis
+python main.py
+```
+
+## Future Improvements
+- Implementing **Gaussian HJM model** for more realistic term structure modeling.
+- Incorporating **machine learning** to estimate yield curve parameters.
+- Extending the Monte Carlo framework to **multi-factor models**.
+
+## References
+1. Cox, J., Ingersoll, J., & Ross, S. (1985). A Theory of the Term Structure of Interest Rates.
+2. Hull, J., & White, A. (1990). Pricing Interest-Rate Derivative Securities.
+3. Ho, T., & Lee, S. (1986). Term Structure Movements and Pricing Interest Rate Contingent Claims.
+
+---
+This README provides a **mathematical, theoretical, and implementation-focused** explanation of your project. Let me know if you need any modifications! 🚀
+
