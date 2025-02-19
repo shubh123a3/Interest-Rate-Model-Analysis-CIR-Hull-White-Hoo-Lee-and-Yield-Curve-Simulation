@@ -17,6 +17,7 @@ Additionally, it includes **yield curve generation** using Monte Carlo simulatio
 ## Theoretical Background
 ### **1. Cox-Ingersoll-Ross (CIR) Model**
 The CIR model is used to describe the evolution of interest rates using the stochastic differential equation:
+
 $$
 dR_t = \kappa (\theta - R_t) dt + \sigma \sqrt{R_t} dW_t
 $$
